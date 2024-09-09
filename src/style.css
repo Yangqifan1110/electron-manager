@@ -1,0 +1,6 @@
+.highlighted-row {
+    background:#F2F5F8 ;
+  }
+  .highlighted-row .ant-table-cell {
+    color: #202631 !important;
+  }

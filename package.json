@@ -1,0 +1,102 @@
+{
+  "name": "best-bot",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "chcp 65001 && vite",
+    "dev-mac": "vite",
+    "build": "rimraf dist-electron && vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "ant-design-vue": "^4.2.3",
+    "axios": "^1.7.2",
+    "crypto": "^1.0.1",
+    "electron-log": "^5.1.7",
+    "electron-updater": "^6.2.1",
+    "fast-glob": "^3.3.2",
+    "hotkeys-js": "^3.13.7",
+    "lodash": "^4.17.21",
+    "pinia": "^2.1.7",
+    "socket.io-client": "^4.7.5",
+    "vue": "^3.4.21",
+    "vue-draggable-plus": "^0.5.2",
+    "vue-router": "^4.4.0",
+    "vue3-menus": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.7",
+    "@types/react": "^18.3.3",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
+    "electron": "^30.0.6",
+    "electron-builder": "^24.13.3",
+    "electron-devtools-installer": "^3.2.0",
+    "less": "^4.2.0",
+    "rimraf": "^5.0.7",
+    "typescript": "^5.2.2",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.2.0",
+    "vite-plugin-electron": "^0.28.7",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vue-tsc": "^2.0.6"
+  },
+  "build": {
+    "appId": "com.bestpay.bot",
+    "productName": "Best_Bot",
+    "copyright": "Copyright © 2024 BestBot",
+    "directories": {
+      "output": "release/${version}"
+    },
+    "files": [
+      "./dist",
+      "./package.json",
+      "./dist-electron"
+    ],
+    "extraResources": [
+      {
+        "from": "public/exe",
+        "to": "exe",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "mac": {
+      "artifactName": "${productName}_${version}-setup.${ext}",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}_${version}-setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "${productName}_${version}-setup.${ext}",
+      "deleteAppDataOnUninstall": false
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": ""
+      }
+    ],
+    "releaseInfo": {
+      "releaseNotes": "版本更新的具体内容"
+    }
+  }
+}
